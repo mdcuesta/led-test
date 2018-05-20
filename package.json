@@ -1,0 +1,13 @@
+{
+  "name": "led",
+  "version": "1.0.0",
+  "main": "led.js",
+  "author": "Michael Dela Cuesta <michael.dcuesta@gmail.com\"",
+  "license": "MIT",
+  "bin": {
+    "led": "led.js"
+  },
+  "dependencies": {
+    "onoff": "^3.1.0"
+  }
+}

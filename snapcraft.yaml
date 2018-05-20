@@ -1,0 +1,20 @@
+name: led
+version: '1.0'
+summary: LED command line tool
+description: |
+  Turn ON LED:-
+    $ led --on
+  Turn OFF LED
+    $ led --off
+
+grade: devel
+confinement: devmode
+
+apps:
+  led:
+    command: led
+
+parts:
+  led:
+    plugin: nodejs
+    source: .
