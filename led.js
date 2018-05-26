@@ -3,24 +3,32 @@
 const Gpio = require('onoff').Gpio;
 const args = process.argv.slice(2);
 
-const LED = new Gpio(4, 'out');
 
 let on = undefined;
+let led = undefined;
 
-if (args[0] === '--on') {
-  on = true;
-} else if (args[0] === '--off') {
-	on = false;
-}
-
-if (on === undefined) {
-	console.log('Option must be either --on or --off.');
-}
-
-if (on) {
-  console.log('ON');
-  LED.writeSync(1);
+if (args[0] === 'RED') {
+  led = new Gpio(4, 'out');
+} else if (args[0] === 'GREEN') {
+  led = new Gpio(17, 'out');
 } else {
-	console.log('OFF');
-  LED.writeSync(0);
+  console.log('LED color must be RED or GREEN');
 }
+
+if (args[1] === '--on') {
+  on = true;
+} else if (args[1] === '--off') {
+  on = false;
+} else {
+  console.log('Option must be either --on or --off.');
+}
+
+
+if (led !== undefined && on) {
+  led.writeSync(1);
+} else if (led !== undefined && !on) {
+  led.writeSync(0);
+} else {
+  console.log('Invalid command.');
+}
+
